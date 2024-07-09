@@ -1,4 +1,15 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+import path from "path";
+
+const nextConfig = {
+  async rewrites() {
+    return [
+      {
+        source: "/downloads/:path*",
+        destination: path.join(process.cwd(), "downloads", ":path*"),
+      },
+    ];
+  },
+};
 
 export default nextConfig;
